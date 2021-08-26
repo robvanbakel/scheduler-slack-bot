@@ -1,2 +1,2 @@
-# work-scheduler-slack-bot
+# scheduler-slack-bot
 Easily add your work schedule to your Calendar!

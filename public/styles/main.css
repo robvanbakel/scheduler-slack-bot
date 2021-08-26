@@ -1,0 +1,378 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+}
+@media (max-width: 900px) {
+  body {
+    font-size: 14px;
+  }
+}
+@media (max-width: 420px) {
+  body {
+    font-size: 12px;
+  }
+}
+
+.container {
+  max-width: 960px;
+  padding: 0 1em;
+  margin: 0 auto;
+}
+
+h1 {
+  font-size: 2.65em;
+  line-height: 1.25em;
+}
+
+h2 {
+  font-size: 2.5em;
+  text-align: center;
+}
+
+a {
+  color: #dd4d1f;
+  text-decoration: none;
+  cursor: pointer;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+button {
+  padding: 0 3em;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  box-shadow: 0px 15px 15px -20px rgba(0, 0, 0, 0.85);
+  border: none;
+  outline: none;
+  font-weight: 700;
+  cursor: pointer;
+}
+button.primary {
+  height: 56px;
+  border-radius: 28px;
+  font-size: 18px;
+  background-color: #3e81db;
+  color: #fff;
+  transition: all 200ms ease;
+}
+button.primary.small {
+  height: 48px;
+  border-radius: 24px;
+  font-size: 16px;
+}
+button.primary:hover {
+  background-color: #276ecf;
+  box-shadow: 0px 15px 15px -20px rgba(0, 0, 0, 0.85);
+}
+button.primary:active {
+  transform: scale(0.98);
+  background-color: #2467c2;
+  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.5);
+}
+button.secondary {
+  box-shadow: none;
+  background: none;
+  height: 48px;
+  border-radius: 24px;
+  font-size: 16px;
+  color: #c3c3c3;
+}
+
+header {
+  background: linear-gradient(180deg, #ffdd73 0%, #ffa450 100%);
+  height: 700px;
+  overflow: hidden;
+}
+@media (max-width: 900px) {
+  header {
+    height: auto;
+    padding: 5em 0;
+  }
+}
+header .container {
+  height: 100%;
+  display: grid;
+  flex-direction: column;
+  grid-template-columns: 360px auto;
+  justify-content: flex-start;
+  align-items: center;
+  position: relative;
+}
+@media (max-width: 900px) {
+  header .container {
+    grid-template-columns: auto;
+    justify-content: center;
+    text-align: center;
+  }
+  header .container button {
+    margin: 0 auto;
+  }
+}
+header .container .title {
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+}
+header .container .title .logo img {
+  height: 72px;
+}
+header .container .title h1 {
+  margin: 2em 0 1.5em;
+}
+header .container .title button.secondary {
+  color: #393939;
+  font-size: 0.9em;
+  text-align: left;
+  margin: 0.75em 1em;
+  padding: 0;
+  font-weight: 400;
+}
+@media (max-width: 900px) {
+  header .container .title button.secondary {
+    margin: 0.75em auto;
+  }
+}
+header .container .title button.secondary:hover {
+  text-decoration: underline;
+}
+header .container .hero-image {
+  position: absolute;
+  bottom: 0;
+  right: -60px;
+  height: 690px;
+}
+@media (max-width: 900px) {
+  header .container .hero-image {
+    display: none;
+  }
+}
+header .container .hero-image img {
+  height: 100%;
+}
+
+section#parse {
+  background-color: #333;
+  color: #ccc;
+  overflow: hidden;
+  transition: height 500ms ease-in-out;
+}
+section#parse .container {
+  padding-top: 120px;
+  padding-bottom: 120px;
+  display: grid;
+  align-items: center;
+  grid-template-columns: 2fr 1fr;
+  gap: 30px;
+  height: 100%;
+  align-items: center;
+}
+@media (max-width: 900px) {
+  section#parse .container {
+    grid-template-columns: auto;
+    width: 460px;
+    max-width: 80vw;
+  }
+}
+section#parse .container .text {
+  font-size: 1.125em;
+  line-height: 1.65;
+}
+section#parse .container form {
+  position: relative;
+}
+section#parse .container form textarea,
+section#parse .container form div.output {
+  width: 100%;
+  resize: none;
+  padding: 1em;
+  height: 130px;
+  border-radius: 0.5em;
+}
+section#parse .container form div.output {
+  text-align: center;
+  border: 1px solid #999;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+section#parse .container form div.output h4 {
+  margin-bottom: 0.5em;
+}
+section#parse .container form button {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: -1em;
+  transform: translateY(100%);
+}
+
+section#manual {
+  padding: 120px 0 60px;
+  text-align: center;
+  width: 100vw;
+  overflow: hidden;
+  position: relative;
+}
+section#manual .phone-wrapper {
+  height: 60vh;
+  overflow: hidden;
+}
+section#manual .phone-wrapper video {
+  height: 101%;
+}
+section#manual .steps {
+  margin: 2em auto;
+  display: flex;
+  justify-content: center;
+  height: 180px;
+}
+@media (max-width: 900px) {
+  section#manual .steps {
+    height: 160px;
+  }
+}
+@media (max-width: 420px) {
+  section#manual .steps {
+    height: 130px;
+  }
+}
+section#manual .steps .step {
+  max-width: 80vw;
+  position: absolute;
+  transition: all 200ms ease-in-out;
+  opacity: 0.15;
+}
+section#manual .steps .step.active {
+  opacity: 1;
+}
+section#manual .steps .step h6 {
+  color: #dd4d1f;
+  font-size: 1em;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 0.35em;
+}
+section#manual .steps .step h2 {
+  font-size: 2.5em;
+  margin-bottom: 0.85em;
+}
+section#manual .steps .step p {
+  font-size: 1.2em;
+  line-height: 1.5;
+}
+section#manual .buttons {
+  width: 340px;
+  height: 80px;
+  margin: 0 auto;
+  position: relative;
+}
+section#manual .buttons button {
+  position: absolute;
+}
+section#manual .buttons button i {
+  position: relative;
+  top: 0.1em;
+}
+section#manual .buttons button.primary.small {
+  width: 150px;
+  padding: 0;
+  right: 0;
+  transition: all 200ms ease;
+}
+section#manual .buttons button.primary.small i {
+  margin-left: 1em;
+}
+section#manual .buttons button.primary.small.slack {
+  background-color: #007a5a;
+  border-radius: 6px;
+}
+section#manual .buttons button.secondary {
+  padding-left: 1.5em;
+  padding: 0;
+  left: 15px;
+  border-radius: 0;
+}
+section#manual .buttons button.secondary i {
+  margin-right: 1em;
+}
+
+section#faq {
+  padding: 6em 0;
+  background-color: #f0f0f0;
+}
+section#faq h2 {
+  margin-bottom: 3em;
+}
+section#faq .question-wrapper {
+  padding: 0 1.75em;
+  margin-bottom: 3em;
+}
+section#faq .question-wrapper:last-child {
+  margin-bottom: 0;
+}
+section#faq .question-wrapper .question {
+  font-size: 1.35em;
+  font-weight: 700;
+  margin-bottom: 1em;
+  cursor: pointer;
+  position: relative;
+}
+section#faq .question-wrapper .answer {
+  font-size: 1.125em;
+  line-height: 2em;
+  overflow: hidden;
+  height: 0px;
+  transition: height 200ms ease-in-out;
+}
+section#faq .question-wrapper > .question::before {
+  font-family: "Font Awesome 5 Free";
+  content: "";
+  color: #dd4d1f;
+  position: absolute;
+  top: 0.1em;
+  left: -2em;
+  padding: 0 1em;
+  transition: transform 200ms ease-in-out;
+}
+@media (max-width: 900px) {
+  section#faq .question-wrapper > .question::before {
+    top: 0;
+    left: -2.2em;
+  }
+}
+section#faq .question-wrapper.open > .question::before {
+  transform: rotate(90deg);
+}
+
+footer .container {
+  padding: 5em 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@media (max-width: 900px) {
+  footer .container {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+footer .container img {
+  width: 3em;
+  filter: drop-shadow(0px 2px 1px rgba(0, 0, 0, 0.15));
+  margin: 1.5em;
+}
+footer .container p {
+  font-size: 1em;
+  max-width: 80vw;
+}
