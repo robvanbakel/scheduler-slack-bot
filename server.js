@@ -7,12 +7,15 @@ const sendCalendar = require('./sendCalendar');
 const app = express();
 
 app.use(express.static(__dirname + '/public'));
-app.use(express.urlencoded({ extended: false }))
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
 
 // General route for parsing and saving an incoming schedule
 app.post('/api', (req, res) => {
 
-  res.send(parse(req.body.payload));
+  const { id } = parse(req.body.schedule)
+
+  res.send({ id });
 
 });
 

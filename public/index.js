@@ -200,12 +200,16 @@ const Parse = {
   },
   methods: {
     async parse() {
+
       const res = await fetch('/api', {
-        method: 'post',
-        body: this.userInput
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          schedule: this.userInput
+        })
       });
-      const data = await res.text()
-      const { id } = JSON.parse(data);
+
+      const { id } = await res.json()
 
       this.icsDownloaded = true
 
