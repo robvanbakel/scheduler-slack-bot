@@ -1,17 +1,27 @@
 <script setup lang="ts">
 const userInput = ref("");
 const icsDownloaded = ref(false);
+const messageInvalid = ref(false);
 
 const parse = async () => {
-  const data = await $fetch("/api/parse", {
-    method: "POST",
-    body: { message: userInput.value },
-    redirect: "follow",
-  });
+  messageInvalid.value = false;
 
-  icsDownloaded.value = true;
+  try {
+    const data = await $fetch("/api/parse", {
+      method: "POST",
+      body: { message: userInput.value },
+      redirect: "follow",
+    });
 
-  window.location.replace("data:text/calendar;charset=utf8," + encodeURI(data));
+    icsDownloaded.value = true;
+
+    window.location.replace(
+      "data:text/calendar;charset=utf8," + encodeURI(data),
+    );
+  } catch {
+    userInput.value = "";
+    messageInvalid.value = true;
+  }
 };
 </script>
 
@@ -35,13 +45,18 @@ const parse = async () => {
           <h4>All done 👍🏻</h4>
           Check your Downloads folder!
         </div>
-        <button
-          v-if="userInput && !icsDownloaded"
-          class="primary small"
-          @click.prevent="parse"
-        >
-          Get Calendar
-        </button>
+        <div class="actions">
+          <button
+            v-if="userInput && !icsDownloaded"
+            class="primary small"
+            @click.prevent="parse"
+          >
+            Get Calendar
+          </button>
+          <div v-if="!userInput && messageInvalid" class="error-message">
+            Invalid message.
+          </div>
+        </div>
       </form>
     </div>
   </section>

@@ -5,14 +5,21 @@ export default defineEventHandler(async (event) => {
 
   if (!body.message) {
     throw createError({
-      statusCode: 422,
+      statusCode: 400,
       statusMessage: "Message not provided",
     });
   }
 
-  const icsContent = parseSchedule(body.message);
+  try {
+    const icsContent = parseSchedule(body.message);
 
-  setHeader(event, "content-type", "text/calendar");
+    setHeader(event, "content-type", "text/calendar");
 
-  return icsContent.data;
+    return icsContent.data;
+  } catch {
+    throw createError({
+      statusCode: 422,
+      statusMessage: "Invalid message provided",
+    });
+  }
 });
